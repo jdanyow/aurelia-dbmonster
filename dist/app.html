@@ -1,0 +1,28 @@
+<template>
+  <div>
+    <table class="table table-striped latest-data" ref="optimizedTable">
+      <tbody>
+        <tr repeat.for="db of databases">
+          <td class="dbname">
+            ${db.dbname & oneTime}
+          </td>
+          <td class="query-count">
+            <span simple-class.one-time="db.lastSample.countClassName">
+              ${db.lastSample.nbQueries & oneTime}
+            </span>
+          </td>
+          <td repeat.for="q of db.lastSample.topFiveQueries & oneTime" simple-class.one-time="q.elapsedClassName">
+            ${q.formatElapsed & oneTime}
+            <div class="popover left">
+              <div class="popover-content">
+                ${q.query & oneTime}
+                <foo>hello world</foo>
+              </div>
+              <div class="arrow"></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
