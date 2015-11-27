@@ -47,29 +47,14 @@ To run the app, follow these steps.
 > The Skeleton App uses [BrowserSync](http://www.browsersync.io/) for automated page refreshes on code/markup changes concurrently accross multiple browsers. If you prefer to disable the mirroring feature set the [ghostMode option](http://www.browsersync.io/docs/options/#option-ghostMode) to false
 
 ## Bundling
-Bundling is performed by [Aurelia Bundler](http://github.com/aurelia/bundler). A gulp task is already configured for that. Use the following command to bundle the app:
 
-  ```shell
-    gulp bundle
-  ```
-
-You can also unbundle using the command bellow:
-
-  ```shell
-  gulp unbundle
-  ```
-#### Configuration
-The configuration is done by ```bundles.json``` file.
-##### Optional
-Under ```options``` of ```dist/aurelia``` add ```rev: true``` to add bundle file revision/version.
-
-## Exporting bundled production version
-A gulp task is already configured for that. Use the following command to export the app:
-
-  ```shell
-    gulp export
-  ```
-The app will be exported into ```export``` directory preserving the directory structure.
-#### Configuration
-The configuration is done by ```bundles.json``` file.
-In addition, ```export.json``` file is available for including individual files.
+Execute:
+```shell
+jspm bundle aurelia-bootstrapper + aurelia-framework aurelia-bundle.min.js --minify
+```
+Add the following to the index.html:
+```html
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+<script src="aurelia-bundle.min.js"></script> <!-- <============<<< -->
+```
