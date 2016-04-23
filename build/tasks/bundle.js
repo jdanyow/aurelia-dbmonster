@@ -1,14 +1,15 @@
 var gulp = require('gulp');
 var bundler = require('aurelia-bundler');
-var bundles = require('../bundles.json');
+var bundles = require('../bundles.js');
 
 var config = {
   force: true,
-  packagePath: '.',
+  baseURL: '.',
+  configPath: './config.js',
   bundles: bundles.bundles
 };
 
-gulp.task('bundle', function() {
+gulp.task('bundle', ['build'], function() {
   return bundler.bundle(config);
 });
 
